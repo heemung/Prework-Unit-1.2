@@ -36,9 +36,8 @@ namespace Prework_Unit_1._2
             // Calculate the interval between the two dates.
             TimeSpan interval = date3 - date2;
             Console.WriteLine("{0} - {1} = {2}", date2, date3, interval.ToString());
-            Console.WriteLine("   {0,-35} {1,20}", "Value of Days Component:", interval.Days);
-            Console.WriteLine("   {0,-35} {1,20}", "Value of Hours Component:", interval.Hours);
-            Console.WriteLine("   {0,-35} {1,20}", "Value of Minutes Component:", interval.Minutes);
+            Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", "The difference is: ",
+                 interval.Days, "days,", interval.Hours, "hours and", interval.Minutes, "mins");
 
             Console.ReadLine();
         }
