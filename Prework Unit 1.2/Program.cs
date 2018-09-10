@@ -16,36 +16,69 @@ namespace Prework_Unit_1._2
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("This Program will calculate the difference between two dates\n");
-            //Console.WriteLine("Please enter the first date\n");
+            Console.WriteLine("This Program will calculate the difference between two dates\n");
+
+            bool tempLoop = true;
+            TimeSpan difference;
+
+            while (temp)
+            {
+                Console.WriteLine("Please enter the first date\n");
+                string userDate1 = Console.ReadLine();
+
+                if(testDate == false)
+                    tempLoop = 
+            }
+
+            Console.WriteLine("Please enter the first date\n");
+            string userDate2 = Console.ReadLine();
+
             //Console.WriteLine("Enter the Month ");
-            string dateString = "5/1/2008 8:30:52 AM";
-            DateTime date1 = DateTime.Parse(dateString,
-                                      System.Globalization.CultureInfo.InvariantCulture);
-            Console.WriteLine(date1);
-            string iso8601String = "20080501T08:30:52Z";
-            DateTime dateISO8602 = DateTime.ParseExact(iso8601String, "yyyyMMddTHH:mm:ssZ",
-                                            System.Globalization.CultureInfo.InvariantCulture);
+            string dateString = "02/30/2008";
 
+            //DateTime date1 = DateTime.Parse(dateString,
+                         //             System.Globalization.CultureInfo.InvariantCulture);
+            //Console.WriteLine(date1);
 
-            Console.WriteLine(iso8601String);
-
-            // Define two dates.
+            // Define two dates. year, month, day, military hour, min, sec
             DateTime date2 = new DateTime(2010, 1, 1, 8, 0, 15);
             DateTime date3 = new DateTime(2010, 8, 18, 13, 30, 30);
-            // Calculate the interval between the two dates.
-            TimeSpan interval = date3 - date2;
-            Console.WriteLine("{0} - {1} = {2}", date2, date3, interval.ToString());
+
+            // Calculate the interval between the two dates without negitive numbers.
+            if (date3 >= date2)
+            {
+                difference = date3 - date2;
+            }
+            else
+            {
+                difference = date2 - date3;
+            }
+            //test for the timespan answer
+            //Console.WriteLine("{0} - {1} = {2}", date2, date3, difference.ToString());
+
+
             Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", "The difference is: ",
-                 interval.Days, "days,", interval.Hours, "hours and", interval.Minutes, "mins");
+                 difference.Days, "days,", difference.Hours, "hours and", difference.Minutes, 
+                 "mins");
 
             Console.ReadLine();
         }
 
-        /*public static date FullDate (int month, int day, int year)
+        public static bool testDate (string inputDateTogther)
         {
-            Console.WriteLine("Enter the Month ");
-            month = Convert.ToDateTime(Console.ReadLine();
-        }*/
+            DateTime tempDate;
+            if (DateTime.TryParse(inputDateTogther, out tempDate))
+            {
+                Console.WriteLine("Converted '{0}' to {1}.", inputDateTogther,
+                                    tempDate);
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Try again and enter a vaild date. '{0}' is not a vaild date.\n",
+                    inputDateTogther);
+                return false;
+            }
+        }
     }
 }
