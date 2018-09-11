@@ -4,12 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/* Task: Write a C# console application to calculate the duration between two dates in Years,
-Months and Days. The user should enter two dates as input, then the program will show the
-result of the difference in time between these two dates. Show the difference in days, hours, and
-minutes.
-To complete this task, you’ll need to use what you’ve learned in addition to some research. 
-*/
 namespace Prework_Unit_1._2
 {
     class Program
@@ -17,11 +11,14 @@ namespace Prework_Unit_1._2
         static void Main(string[] args)
         {
             Console.WriteLine("This Program will calculate the difference between two dates\n");
-
+            //Initalizing the string values and the loop value.
             string userDate1 = "0", userDate2 = "0";
             bool tempLoop = true;
+            //adding or subtracting a date time makes a timespan number/class initializing container
             TimeSpan difference;
 
+            //while loop will be true until the user inputs a correct date that is tested by
+            //the TestDate method. Once the TestDate is true it will return to false.
             while (tempLoop)
             {
                 Console.WriteLine("Please enter the first date in format '1/11/2011' : ");
@@ -31,6 +28,9 @@ namespace Prework_Unit_1._2
                     tempLoop = false;
             }
 
+            //setting temp loop back to true
+            //while loop will be true until the user inputs a correct date that is tested by
+            //the TestDate method. Once the TestDate is true it will return the loop to false.
             tempLoop = true;
             while (tempLoop)
             {
@@ -40,13 +40,15 @@ namespace Prework_Unit_1._2
                 if (TestDate(userDate2) == true)
                     tempLoop = false;
             }
+            /*
+            testing out msdn formats for parse
+            DateTime date1 = DateTime.Parse(dateString,
+                        System.Globalization.CultureInfo.InvariantCulture);
+            Console.WriteLine(date1);
+            */
 
-
-            //DateTime date1 = DateTime.Parse(dateString,
-            //             System.Globalization.CultureInfo.InvariantCulture);
-            //Console.WriteLine(date1);
-
-            // Define two dates. year, month, day, military hour, min, sec
+            // Assigns the string values of the user inputs to DateTime using certain format.
+            //Parse is done because Testparse has already been completed from TestDate method.
             DateTime date1 = DateTime.Parse(userDate1,
                 System.Globalization.CultureInfo.InvariantCulture);
             DateTime date2 = DateTime.Parse(userDate2,
@@ -61,27 +63,34 @@ namespace Prework_Unit_1._2
             {
                 difference = date1 - date2;
             }
+
             //test for the timespan answer
             //Console.WriteLine("{0} - {1} = {2}", date2, date3, difference.ToString());
 
-
+            //This out puts the differance Timespan object into days hours and minutes.
             Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", "The difference is: ",
                  difference.Days, "days,", difference.Hours, "hours and", difference.Minutes, 
-                 "mins \n OR \n" );
+                 "mins \n\n OR \n" );
+            //This outputs the differance Timespan object into Total days Total hours and Total
+            //mins
             Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", "The difference is: ",
                 difference.TotalDays, "Total days. OR", difference.TotalHours, "Total hours. OR", 
                 difference.TotalMinutes,"Total mins.");
-
+            Console.WriteLine("\n Press 'Enter' to end the program.");
             Console.ReadLine();
         }
 
+        //This method grabs the user input from each loop and does a tryparse to see if it is 
+        // a valid date. If the date is valid it will return true if false it gives the user
+        // and error and returns false.
         public static bool TestDate (string inputDateTogther)
         {
             DateTime tempDate;
             if (DateTime.TryParse(inputDateTogther, out tempDate))
             {
-                Console.WriteLine("Converted '{0}' to {1}.", inputDateTogther,
-                                    tempDate);
+                //Test. Grabs the string value and shows the parse value if true.
+                //Console.WriteLine("Converted '{0}' to {1}.", inputDateTogther,
+                //                    tempDate);
                 return true;
             }
             else
